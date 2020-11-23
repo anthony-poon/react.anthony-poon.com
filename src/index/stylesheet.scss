@@ -1,0 +1,49 @@
+@import "../common";
+
+@font-face {
+    font-family: "BebasNeue";
+    src: url("../fonts/BebasNeue-Regular.ttf");
+}
+// 423E37
+// E3B23C
+.overlay__header {
+    color: #E3B23C;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    .overlay-header__icon {
+        height: 45px;
+        width: 45px;
+    }
+    .overlay-header__menu-text {
+        font-family: "BebasNeue", sans-serif;
+        font-size: $font-size-lg;
+    }
+
+    .overlay-header__name {
+        font-family: "BebasNeue", sans-serif;
+        font-size: $display3-size;
+    }
+    .hoverable-dark {
+        text-decoration: none;
+    }
+
+    .hoverable-dark:hover {
+        transition: 0.7s;
+        cursor: pointer;
+        color: $light;
+    }
+}
+
+.overlay__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.content__wrapper {
+    min-height: 100vh;
+    background-color: #423E37;
+}

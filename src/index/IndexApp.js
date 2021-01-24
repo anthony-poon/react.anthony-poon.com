@@ -3,38 +3,36 @@ import "./stylesheet.scss"
 import MenuIcon from '@material-ui/icons/Menu';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
-
+import {ReactComponent as DownArrow} from "./images/down-arrow.svg";
+import {ReactComponent as MouseIcon} from './images/mouse.svg';
 class IndexApp extends React.Component {
     render() {
         return (
             <>
-                <div className={"overlay__header pt-3 px-3 pt-md-5 px-md-5"}>
-                    <div className={"container-fluid"}>
-                        <div className={"row"}>
-                            <div className={"col-3 d-flex align-items-center"}>
-                                <div className={"ml-4 overlay-header__menu p-3 d-inline-flex align-items-center hoverable-dark"}>
-                                    {/*<MenuIcon/>*/}
-                                    {/*<span className={"ml-4 overlay-header__menu-text"}>Menu</span>*/}
-                                </div>
-                            </div>
-                            <div className={"col d-flex align-items-center justify-content-center"}>
-                                <span className={"overlay-header__name"}>Anthony Poon</span>
-                            </div>
-                            <div className={"col-3 d-flex align-items-center justify-content-end"}>
-                                <div className={"hoverable-dark p-3"}>
-                                    <GitHubIcon/>
-                                </div>
-                                <div className={"hoverable-dark p-3"}>
-                                    <LinkedInIcon/>
-                                </div>
-                            </div>
+                <div className={"overlay__header pt-3 pt-md-5 px-md-5"}>
+                    <span className={"overlay-header__name"}>Anthony Poon</span>
+                    <span className={"overlay-header__icon-group"}>
+                        <div className={"overlay-header__icon"}>
+                            <GitHubIcon/>
+                        </div>
+                        <div className={"overlay-header__icon"}>
+                            <LinkedInIcon/>
+                        </div>
+                    </span>
+                </div>
+
+                <div className={"content__wrapper"}>
+                    <div className={"container"}>
+                        <div className={"content__hero d-flex justify-content-center align-items-center"}>
+                            <span className={"hero__display-text"}>I am a Full Stack Developer</span>
+                            <span className={"hero__bottom"}>
+                                <MouseIcon className={"hero__scroll-icon"}/>
+                                <DownArrow className={"hero__down-icon"}/>
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div className={"overlay__footer"}>
-
-                </div>
-                <div className={"content__wrapper"}>
 
                 </div>
             </>

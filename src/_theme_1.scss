@@ -1,0 +1,18 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+@font-face {
+    font-family: "BebasNeue";
+    src: url("./fonts/BebasNeue-Regular.ttf");
+}
+
+$theme-colors: (
+        "primary": #E3B23C,
+);
+
+$sans-serif: "BebasNeue", sans-serif;
+
+$bg-color: gray("800");
+
+$text-light: gray("100");

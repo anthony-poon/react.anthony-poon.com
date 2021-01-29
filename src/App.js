@@ -10,17 +10,20 @@ import React from "react";
 
 function App() {
     return (
-        <Router>
-            <Switch>
-                <Route exact={true} path="/">
-                    <IndexApp />
-                </Route>
+        <div className={"container-fluid px-0"}>
+            <Router>
+                <Switch>
+                    <Route exact={true} path="/">
+                        <IndexApp />
+                    </Route>
 
-                <Route>
-                    <p>404</p>
-                </Route>
-            </Switch>
-        </Router>
+                    <Route>
+                        <p>404</p>
+                    </Route>
+                </Switch>
+            </Router>
+
+        </div>
     );
 }
 

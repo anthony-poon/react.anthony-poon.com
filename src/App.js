@@ -8,27 +8,30 @@ import React from "react";
 import "./stylesheet.scss";
 import AboutMeApp from "./about-me/AboutMeApp";
 import ProficiencyApp from "./proficiency/ProficiencyApp";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
     return (
-        <div className={"container-fluid px-0"}>
+        <div className={"app__background"}>
             <Router>
-                <Switch>
-                    <Route exact={true} path="/">
-                        <IndexApp />
-                    </Route>
-                    <Route path="/about-me">
-                        <AboutMeApp />
-                    </Route>
-                    <Route path="/proficiency">
-                        <ProficiencyApp />
-                    </Route>
-                    <Route>
-                        <p>404</p>
-                    </Route>
-                </Switch>
+                <Route
+                    render={({ location }) => (
+                        <AnimatePresence exitBeforeEnter initial={false}>
+                            <Switch  location={location} key={location.pathname}>
+                                <Route exact={true} path="/" component={IndexApp}>
+                                </Route>
+                                <Route exact={true} path="/about-me" component={AboutMeApp}>
+                                </Route>
+                                {/*<Route exact={true} path="/proficiency" component={ProficiencyApp}>*/}
+                                {/*</Route>*/}
+                                <Route>
+                                    <p>404</p>
+                                </Route>
+                            </Switch>
+                        </AnimatePresence>
+                    )}>
+                </Route>
             </Router>
-
         </div>
     );
 }

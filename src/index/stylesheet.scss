@@ -1,8 +1,6 @@
 @import "../share/theme_1";
 
 .index__container {
-    background-color: $bg-color-1;
-
     .overlay__header {
         color: theme-color("primary");
         position: absolute;
@@ -15,7 +13,7 @@
         .overlay-header__name {
             flex: 1;
             font-family: $sans-serif;
-            font-size: $h2-font-size;
+            font-size: $h3-font-size;
             text-align: left;
             padding-left: map-get($spacers, 3);
             @include media-breakpoint-up(md) {
@@ -49,46 +47,63 @@
         }
     }
 
-    .overlay__footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-
     .content__wrapper {
+        position: relative;
         color: $text-light;
+        height: 100vh;
         .content__hero {
-            height: 100vh;
-            .hero__display-text {
-                font-size: $display4-size;
-                font-weight: $display4-weight;
-                @include media-breakpoint-up(md) {
-                    font-size: $display1-size;
-                    font-weight: $display1-weight;
-                }
-
+            position: absolute;
+            bottom: 50%;
+            left: 0;
+            right: 0;
+            font-family: "Avenir", sans-serif;
+            .hero__display-text-1 {
+                padding-top: 120px;
+                padding-bottom: map-get($spacers, 5);
+                font-size: $h1-font-size;
             }
-
-            .hero__bottom {
-                position: absolute;
-                bottom: map-get($spacers, 4);
+            .hero__display-text-2 {
+                font-size: $display3-size;
+                line-height: $display3-size;
+            }
+            @include media-breakpoint-up(md) {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                .hero__scroll-icon {
-                    height: 40px;
-                    width: 40px;
-                    fill: $text-light;
+                .hero__display-text-1 {
+                    font-size: $display4-size;
                 }
-                .hero__down-icon {
-                    margin-top: map-get($spacers, 3);
-                    fill: $text-light;
-                    width: 20px;
+                .hero__display-text-2 {
+                    font-size: $display2-size;
                 }
             }
-
         }
+        .content__footer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: map-get($spacers, 5);
+            .content__footer-link {
+                text-decoration: none;
+                color: $light;
+                font-size: $h3-font-size;
+                font-family: "Merriweather", serif;
+
+                .content__footer-bullet {
+                    transition: 0.3s;
+                    display: inline-block;
+                    transform: scale(0.4);
+                    padding-top: map-get($spacers, 3);
+                    padding-right: map-get($spacers, 3);
+                }
+            }
+            .content__footer-link:hover {
+                .content__footer-bullet {
+                    transform: scale(1);
+                }
+            }
+        }
+
+
     }
 }

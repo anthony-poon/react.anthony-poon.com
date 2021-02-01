@@ -7,6 +7,16 @@
     src: url("./fonts/BebasNeue-Regular.ttf");
 }
 
+@font-face {
+    font-family: "Merriweather";
+    src: url("./fonts/Merriweather-Light.otf");
+}
+
+@font-face {
+    font-family: "Avenir";
+    src: url("./fonts/AvenirNextLTPro-Regular.otf");
+}
+
 $theme-colors: (
         "primary": #E3B23C,
 );
@@ -19,3 +29,4 @@ $bg-color-2: gray("800");
 
 $text-light: gray("100");
 
+$light: rgba(255, 255, 255, 0.7);

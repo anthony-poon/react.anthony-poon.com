@@ -7,3 +7,7 @@
 @import "node_modules/bootstrap/scss/grid";
 @import "node_modules/bootstrap/scss/bootstrap-grid";
 @import "node_modules/bootstrap/scss/alert";
+
+.app__background {
+    background-color: $bg-color-1
+}

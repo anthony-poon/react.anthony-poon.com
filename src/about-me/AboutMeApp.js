@@ -1,7 +1,7 @@
 import React from "react";
 import {ReactComponent as AboutMeFullStack} from "./images/about-me-full-stack.svg";
 import {ReactComponent as AboutMeEdu} from "./images/about-me-edu.svg";
-import {ReactComponent as AboutMeApp} from "./images/about-me-app.svg";
+import {ReactComponent as AboutMeMobile} from "./images/about-me-app.svg";
 import {ReactComponent as AboutMeCV} from "./images/about-me-cv-2.svg";
 import "./stylesheet.scss";
 
@@ -25,11 +25,11 @@ const slides = [
 const slideIcons = [
     AboutMeFullStack,
     AboutMeEdu,
-    AboutMeApp,
+    AboutMeMobile,
     AboutMeCV
 ];
 
-class AboutMeSection extends React.Component {
+class AboutMeApp extends React.Component {
     state = {
         slideIndex: 0
     }
@@ -88,4 +88,4 @@ class AboutMeSection extends React.Component {
     }
 }
 
-export default AboutMeSection;
+export default AboutMeApp;

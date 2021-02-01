@@ -1,15 +1,11 @@
 import React from "react"
-import "./stylesheet.scss"
-import MenuIcon from '@material-ui/icons/Menu';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import {ReactComponent as DownArrow} from "./images/down-arrow.svg";
 import {ReactComponent as MouseIcon} from './images/mouse.svg';
-import {ReactComponent as AboutMeApp} from "./images/about-me-app.svg";
-import {ReactComponent as AboutMeCV} from "./images/about-me-cv-2.svg";
-import {ReactComponent as AboutMeEdu} from "./images/about-me-edu.svg";
-import {ReactComponent as AboutMeFullStack} from "./images/about-me-full-stack.svg";
-import AboutMeSection from "./sections/AboutMeSection";
+import AboutMeSection from "./about-me/AboutMeSection";
+import "./stylesheet.scss"
+import ProficiencySection from "./proficiency/ProficiencySection";
 
 class IndexApp extends React.Component {
 
@@ -39,6 +35,7 @@ class IndexApp extends React.Component {
                         </span>
                     </div>
                     <AboutMeSection/>
+                    <ProficiencySection/>
                 </div>
                 <div className={"overlay__footer"}>
 

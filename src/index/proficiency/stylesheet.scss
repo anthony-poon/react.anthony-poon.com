@@ -1,0 +1,59 @@
+@import "../../theme_1";
+
+.content__proficiency {
+    min-height: 60vh;
+    background-color: $bg-color-1;
+    .proficiency__chart-row {
+        cursor: pointer;
+        transition: 0.3s;
+        .proficiency__chart-rhs {
+            display: flex;
+            align-items: center;
+            .proficiency__chart-bar {
+                flex: 1;
+                align-self: stretch;
+                .proficiency__chart-bar-fill {
+                    background-color: theme-color("primary");
+                    height: 100%;
+                    display: inline-block;
+                }
+            }
+            .proficiency__chart-icon {
+                fill: gray("600");
+                height: 25px;
+                width: 25px;
+                display: inline-block;
+                margin-left: map-get($spacers, 4);
+                margin-right: map-get($spacers, 4);
+            }
+
+            .proficiency__chart-icon--focused {
+                fill: $light;
+            }
+        }
+
+    }
+    .proficiency__chart-row--focused {
+        transform: scale(1.1);
+    }
+
+    .proficiency__legend-container {
+        position: relative;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        .proficiency__legend {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .proficiency__legend--focused {
+            opacity: 1;
+        }
+    }
+}

@@ -1,9 +1,9 @@
 import React from "react";
-import {ReactComponent as AboutMeFullStack} from "../images/about-me-full-stack.svg";
-import {ReactComponent as AboutMeEdu} from "../images/about-me-edu.svg";
-import {ReactComponent as AboutMeApp} from "../images/about-me-app.svg";
-import {ReactComponent as AboutMeCV} from "../images/about-me-cv-2.svg";
-
+import {ReactComponent as AboutMeFullStack} from "./images/about-me-full-stack.svg";
+import {ReactComponent as AboutMeEdu} from "./images/about-me-edu.svg";
+import {ReactComponent as AboutMeApp} from "./images/about-me-app.svg";
+import {ReactComponent as AboutMeCV} from "./images/about-me-cv-2.svg";
+import "./stylesheet.scss";
 
 const slides = [
     `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab consectetur corporis delectus deserunt
@@ -51,8 +51,8 @@ class AboutMeSection extends React.Component {
                         <div className={"col-md col-12 about-me__lhs"}>
                             <h1 className={"about-me__header"}>About me</h1>
                             <div className={"about-me__selection-group row"}>
-                                        <span className={"about-me__selection col-12 col-md-3 my-2"}
-                                              onMouseEnter={() => this.handleSlideChange(0)}>Option 1</span>
+                                <span className={"about-me__selection col-12 col-md-3 my-2"}
+                                      onMouseEnter={() => this.handleSlideChange(0)}>Option 1</span>
                                 <span className={"about-me__selection col-12 col-md-3 my-2"}
                                       onMouseEnter={() => this.handleSlideChange(1)}>Option 2</span>
                                 <span className={"about-me__selection col-12 col-md-3 my-2"}
@@ -76,7 +76,7 @@ class AboutMeSection extends React.Component {
                             <div className={"about-me__icon-container"}>
                                 {
                                     slideIcons.map((Icon, index) => (
-                                        <Icon className={"about-me__icon " + (index === slideIndex ? "about-me__icon--visible" : "about-me__icon--invisible")}/>
+                                        <Icon key={index} className={"about-me__icon " + (index === slideIndex ? "about-me__icon--visible" : "about-me__icon--invisible")}/>
                                     ))
                                 }
                             </div>

@@ -9,6 +9,7 @@ import "./stylesheet.scss";
 import AboutMeApp from "./about-me/AboutMeApp";
 import ProficiencyApp from "./proficiency/ProficiencyApp";
 import { AnimatePresence } from "framer-motion";
+import TestApp from "./test/TestApp";
 
 function App() {
     return (
@@ -16,7 +17,7 @@ function App() {
             <Router>
                 <Route
                     render={({ location }) => (
-                        <AnimatePresence exitBeforeEnter initial={false}>
+                        <AnimatePresence exitBeforeEnter>
                             <Switch  location={location} key={location.pathname}>
                                 <Route exact={true} path="/" component={IndexApp}>
                                 </Route>
@@ -24,6 +25,8 @@ function App() {
                                 </Route>
                                 {/*<Route exact={true} path="/proficiency" component={ProficiencyApp}>*/}
                                 {/*</Route>*/}
+                                <Route exact={true} path="/test" component={TestApp}>
+                                </Route>
                                 <Route>
                                     <p>404</p>
                                 </Route>

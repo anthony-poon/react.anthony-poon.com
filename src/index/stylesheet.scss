@@ -1,6 +1,9 @@
 @import "../share/theme_1";
 
 .index__container {
+    .overlay__container {
+        background-color: rgba(52, 58, 64, 0.4);
+    }
     .overlay__header {
         color: theme-color("primary");
         position: absolute;
@@ -53,7 +56,7 @@
         height: 100vh;
         .content__hero {
             position: absolute;
-            bottom: 50%;
+            bottom: 45%;
             left: 0;
             right: 0;
             font-family: "Avenir", sans-serif;

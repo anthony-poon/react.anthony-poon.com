@@ -15,7 +15,7 @@ const AnimatedSquare = (props) => {
                 z: offset * 20
             }}
             animate={{
-                z: offset * 20 + 40
+                z: offset * 20 + 20
             }}
             transition={{
                 delay: 0.5 * offset,
@@ -42,10 +42,6 @@ class DynamicBackground extends React.Component {
                     <AnimatedSquare offset={1}/>
                     <AnimatedSquare offset={2}/>
                     <AnimatedSquare offset={3}>
-                    </AnimatedSquare>
-                    <AnimatedSquare offset={4}>
-                        <div className="spinner-border text-primary" role="status">
-                        </div>
                     </AnimatedSquare>
                 </div>
             </div>

@@ -1,7 +1,6 @@
-@import "../share/theme_1";
+@import "../../share/theme_1";
 
 .content__about-me {
-    background-color: $bg-color-2;
     @include media-breakpoint-up(md) {
         padding-top: map-get($spacers, 5);
     }
@@ -31,7 +30,7 @@
             }
             .about-me__slide-container {
                 position: relative;
-                min-height: 300px;
+                min-height: 250px;
                 width: 100%;
                 margin-top: map-get($spacers, 5);
                 .about-me__slide {

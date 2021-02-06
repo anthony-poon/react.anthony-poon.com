@@ -3,9 +3,9 @@ import {ReactComponent as AboutMeFullStack} from "./images/about-me-full-stack.s
 import {ReactComponent as AboutMeEdu} from "./images/about-me-edu.svg";
 import {ReactComponent as AboutMeMobile} from "./images/about-me-app.svg";
 import {ReactComponent as AboutMeCV} from "./images/about-me-cv-2.svg";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import "./stylesheet.scss";
-import {Link} from "react-router-dom";
+import {ParallaxContainer, fadeLeft, fadeRight} from "../components/parallax";
 
 const slides = [
     `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab consectetur corporis delectus deserunt
@@ -31,19 +31,7 @@ const slideIcons = [
     AboutMeCV
 ];
 
-const pageVariants = {
-    initial: {
-        opacity: 0,
-    },
-    in: {
-        opacity: 1,
-    },
-    out: {
-        opacity: 0,
-    },
-}
-
-class AboutMeApp extends React.Component {
+class AboutMe extends React.Component {
     state = {
         slideIndex: 0
     }
@@ -59,22 +47,18 @@ class AboutMeApp extends React.Component {
             slideIndex
         } = this.state;
         return (
-            <motion.div
+            <div
                 className={"content__about-me"}
-                initial="initial"
-                animate="in"
-                exit="out"
-                variants={pageVariants}
             >
                 <div className={"container"}>
-                    <div className={"row"}>
-                        <div className={"ml-auto col-auto"}>
-                            <Link to={"/"}>BACK</Link>
-                        </div>
-                    </div>
-                    <div className={"about-me__container row"}>
-                        <div className={"col-md col-12 about-me__lhs"}>
-                            <h1 className={"about-me__header"}>About me</h1>
+                    <ParallaxContainer className={"about-me__container row"}>
+                        <motion.div
+                            variants={fadeLeft}
+                            className={"col-md col-12 about-me__lhs"}
+                        >
+                            <h1 className={"about-me__header"}>
+                                About me
+                            </h1>
                             <div className={"about-me__selection-group row"}>
                                 <span className={"about-me__selection col-12 col-md-3 my-2"}
                                       onMouseEnter={() => this.handleSlideChange(0)}>Option 1</span>
@@ -96,21 +80,24 @@ class AboutMeApp extends React.Component {
                                     ))
                                 }
                             </div>
-                        </div>
+                        </motion.div>
                         <div className={"col-md-auto col-12 about-me__rhs"}>
                             <div className={"about-me__icon-container"}>
                                 {
                                     slideIcons.map((Icon, index) => (
-                                        <Icon key={index} className={"about-me__icon " + (index === slideIndex ? "about-me__icon--visible" : "about-me__icon--invisible")}/>
+                                        <Icon key={index}
+                                              className={"about-me__icon " + (index === slideIndex ? "about-me__icon--visible" : "about-me__icon--invisible")}/>
                                     ))
                                 }
                             </div>
                         </div>
-                    </div>
+                    </ParallaxContainer>
+
+
                 </div>
-            </motion.div>
+            </div>
         )
     }
 }
 
-export default AboutMeApp;
+export default AboutMe;

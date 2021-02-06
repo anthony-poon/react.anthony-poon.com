@@ -26,9 +26,9 @@ const chart = [
     }
 ];
 
-class ProficiencyApp extends React.Component{
+class Proficiency extends React.Component{
     state = {
-        focus: 0
+        focus: -1
     }
 
     handleFocus (index) {
@@ -95,4 +95,4 @@ class ProficiencyApp extends React.Component{
     }
 }
 
-export default ProficiencyApp;
+export default Proficiency;

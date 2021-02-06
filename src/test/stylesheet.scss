@@ -1,5 +1,13 @@
 @import "../share/theme_1";
 
 .test__container {
-
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .square {
+        background-color: red;
+        height: 45px;
+        width: 45px;
+    }
 }

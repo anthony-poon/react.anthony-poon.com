@@ -1,8 +1,24 @@
 @import "../share/theme_1";
 
 .index__container {
+    .red-1 {
+        position: fixed;
+        top: 25%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: red;
+    }
+    .red-2 {
+        position: fixed;
+        bottom: 25%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: red;
+    }
     .overlay__container {
-        background-color: rgba(52, 58, 64, 0.4);
+        background-color: rgba(52, 58, 64, 0.6);
     }
     .overlay__header {
         color: theme-color("primary");
@@ -50,18 +66,15 @@
         }
     }
 
-    .content__wrapper {
+    .index__content {
         position: relative;
         color: $text-light;
-        height: 100vh;
-        .content__hero {
-            position: absolute;
-            bottom: 45%;
-            left: 0;
-            right: 0;
+        .hero__container {
+            position: relative;
+            height: 100vh;
             font-family: "Avenir", sans-serif;
             .hero__display-text-1 {
-                padding-top: 120px;
+                padding-top: 30vh;
                 padding-bottom: map-get($spacers, 5);
                 font-size: $h1-font-size;
             }
@@ -80,32 +93,28 @@
                     font-size: $display2-size;
                 }
             }
-        }
-        .content__footer {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: map-get($spacers, 5);
-            .content__footer-link {
-                text-decoration: none;
-                color: $light;
-                font-size: $h3-font-size;
-                font-family: "Merriweather", serif;
+            .hero__display-bottom {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: map-get($spacers, 5);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-                .content__footer-bullet {
-                    transition: 0.3s;
-                    display: inline-block;
-                    transform: scale(0.4);
-                    padding-top: map-get($spacers, 3);
-                    padding-right: map-get($spacers, 3);
+                .hero__mouse-icon {
+                    height: 55px;
+                    fill: $light;
+                    padding-bottom: map-get($spacers, 4);
                 }
-            }
-            .content__footer-link:hover {
-                .content__footer-bullet {
-                    transform: scale(1);
+                .hero__arrow-icon {
+                    height: 25px;
+                    fill: $light;
                 }
             }
         }
+
 
 
     }

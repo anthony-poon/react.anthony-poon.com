@@ -1,28 +1,32 @@
 import React from "react"
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import "./stylesheet.scss"
+import {ReactComponent as IconLoading} from "./images/icon_loading.svg";
 
-
-const AnimatedSquare = (props) => {
-    const {
-        offset,
-        children
-    } = props;
-    return (
-        <motion.div
-            inherit={false}
-            initial={{
-                z: offset * 20
-            }}
-            animate={{
-                z: offset * 20 + 20
-            }}
-            transition={{
-                delay: 0.5 * offset,
+const AnimatedSquare = ({ offset, animate, children }) => {
+    const variants = {
+        "initial": i => ({
+            z: i * 20
+        }),
+        "splash": i => ({
+            z: i * 20
+        }),
+        "loop_1": i => ({
+            z: i * 20 + 40,
+            transition: {
+                delay: i * 0.5,
                 repeat: Infinity,
                 duration: 2,
+                repeatDelay: 0.5,
                 repeatType: "reverse",
-            }}
+            }
+        })
+    }
+    return (
+        <motion.div
+            custom={offset}
+            animate={animate}
+            variants={variants}
             className={`canvas__shape canvas__shape-${offset + 1}`}
         >
             {children}
@@ -30,18 +34,108 @@ const AnimatedSquare = (props) => {
     );
 }
 
+const Spinner = ({isVisible}) => {
+    return (
+        <AnimatePresence>
+            {
+                isVisible && (
+                    <motion.div
+                        initial={{
+                            y: -20,
+                            opacity: 0,
+                        }}
+                        animate={{
+                            y: 0,
+                            opacity: 1
+                        }}
+                        exit={{
+                            y: 20,
+                            opacity: 0
+                        }}
+                        transition={{
+                            duration: 1,
+                            ease: "easeOut"
+                        }}
+                    >
+                        <IconLoading/>
+                    </motion.div>
+                )
+            }
+        </AnimatePresence>
+    )
+}
+
+const Splash = ({isVisible}) => {
+    return (
+        <AnimatePresence>
+            {
+                isVisible && (
+                    <motion.div
+                        initial={{
+                            x: -20,
+                            opacity: 0,
+                        }}
+                        animate={{
+                            x: 0,
+                            opacity: 1
+                        }}
+                        exit={{
+                            x: 20,
+                            opacity: 0
+                        }}
+                        transition={{
+                            duration: 1,
+                            delay: 1,
+                            ease: "easeOut"
+                        }}
+                    >
+                        <span className={"splash__text"}>Hello World</span>
+                    </motion.div>
+                )
+            }
+        </AnimatePresence>
+    )
+
+}
+
 
 class DynamicBackground extends React.Component {
+    state = {
+        animate: "initial"
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                animate: "splash"
+            })
+        }, 3000);
+        setTimeout(() => {
+            this.setState({
+                animate: "loop_1"
+            })
+        }, 6000);
+    }
+
     render() {
+        const {
+            animate
+        } = this.state;
         return (
             <div className={"background__canvas"}>
                 <div
                     className={"canvas__3d-plane"}
                 >
-                    <AnimatedSquare offset={0}/>
-                    <AnimatedSquare offset={1}/>
-                    <AnimatedSquare offset={2}/>
-                    <AnimatedSquare offset={3}>
+                    <AnimatedSquare animate={animate} offset={0}/>
+                    <AnimatedSquare animate={animate} offset={1}/>
+                    <AnimatedSquare animate={animate} offset={2}/>
+                    <AnimatedSquare animate={animate} offset={3}>
+                        <Spinner
+                            isVisible={animate === "initial"}
+                        />
+                        <Splash
+                            isVisible={animate === "splash"}
+                        />
                     </AnimatedSquare>
                 </div>
             </div>

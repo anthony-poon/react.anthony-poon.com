@@ -32,10 +32,18 @@
             animation-name: rotate;
             animation-duration: 12s;
             transform-origin: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: $light
+
+        }
+        .canvas__shape > * {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .canvas__shape-1 {
             background-color: rgba(227, 178, 60, 0.2);
@@ -48,6 +56,10 @@
         }
         .canvas__shape-4 {
             background-color: rgba(227, 178, 60, 0.8);
+        }
+        .splash__text {
+            font-family: "Inter", sans-serif;
+            letter-spacing: 0.2rem;
         }
     }
 }

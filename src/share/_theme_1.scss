@@ -22,6 +22,12 @@ $theme-colors: (
         "primary": #E3B23C,
 );
 
+$theme: theme-color-level("primary", 0);
+$theme-shade-1: theme-color-level("primary", 3);
+$theme-shade-2: theme-color-level("primary", 6);
+$theme-tint-1: theme-color-level("primary", -3);
+$theme-tint-1: theme-color-level("primary", -6);
+
 $sans-serif: "BebasNeue", sans-serif;
 
 $bg-color-1: #222;

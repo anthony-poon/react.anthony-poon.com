@@ -10,13 +10,15 @@ import {ReactComponent as DownArrow} from "./images/down-arrow.svg";
 import {ReactComponent as Mouse} from "./images/mouse.svg";
 
 class IndexApp extends React.Component {
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <div
-                className={"index__container container-fluid"}
+                className={"index__container"}
             >
-                <div className={"red-1"}/>
-                <div className={"red-2"}/>
                 <DynamicBackground/>
                 <motion.div
                     initial={{
@@ -26,7 +28,7 @@ class IndexApp extends React.Component {
                         opacity: 1
                     }}
                     transition={{
-                        delay: 3
+                        delay: 10
                     }}
                     className={"overlay__container"}
                 >

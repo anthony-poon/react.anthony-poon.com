@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
 import {AnimatePresence, motion} from "framer-motion";
 import "./stylesheet.scss"
 import {ReactComponent as IconLoading} from "./images/icon_loading.svg";
@@ -69,16 +69,19 @@ const Spinner = ({isVisible}) => {
 }
 
 const Splash = ({ text }) => {
-    let timeout;
     const [splash, setSplash] = useState(text);
+    const ref = useRef(0)
     useEffect(() => {
         if (text && text !== splash) {
             setSplash(text)
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
+            if (ref.current) {
+                clearTimeout(ref.current)
+            }
+            ref.current = setTimeout(() => {
                 setSplash("")
             }, 1700)
         }
+        // eslint-disable-next-line
     }, [text])
     return (
         <AnimatePresence>

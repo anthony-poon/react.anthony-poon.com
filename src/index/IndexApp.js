@@ -17,7 +17,6 @@ class IndexApp extends React.Component {
         const {
             observing
         } = this.state;
-        console.log(observing);
         return (
             <div
                 className={"index__container"}
@@ -33,7 +32,7 @@ class IndexApp extends React.Component {
                         opacity: 1
                     }}
                     transition={{
-                        delay: 10
+                        delay: 7
                     }}
                     className={"overlay__container"}
                 >

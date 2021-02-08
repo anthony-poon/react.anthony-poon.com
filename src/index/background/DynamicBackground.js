@@ -6,17 +6,17 @@ import {ReactComponent as IconLoading} from "./images/icon_loading.svg";
 const AnimatedSquare = ({ offset, animate, children }) => {
     const variants = {
         "initial": i => ({
-            z: i * 20
+            z: (i - 2) * 20
         }),
         "splash": i => ({
-            z: i * 20
+            z: (i - 2) * 20
         }),
         "loop_1": i => ({
-            z: i * 20 + 40,
+            z: (i - 2) * 20 + 40,
             transition: {
                 delay: i * 0.5,
                 repeat: Infinity,
-                duration: 2,
+                duration: 3,
                 repeatDelay: 0.5,
                 repeatType: "reverse",
             }
@@ -129,7 +129,8 @@ class DynamicBackground extends React.Component {
                     <AnimatedSquare animate={animate} offset={0}/>
                     <AnimatedSquare animate={animate} offset={1}/>
                     <AnimatedSquare animate={animate} offset={2}/>
-                    <AnimatedSquare animate={animate} offset={3}>
+                    <AnimatedSquare animate={animate} offset={3}/>
+                    <AnimatedSquare animate={animate} offset={4}>
                         <Spinner
                             isVisible={animate === "initial"}
                         />

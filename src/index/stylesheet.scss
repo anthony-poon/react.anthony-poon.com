@@ -84,11 +84,12 @@ body::-webkit-scrollbar { /* WebKit */
             height: 100vh;
             font-family: "Avenir", sans-serif;
             .hero__display-text-1 {
-                padding-top: 30vh;
-                padding-bottom: map-get($spacers, 5);
+                padding: 30vh map-get($spacers, 2) map-get($spacers, 5);
                 font-size: $h1-font-size;
             }
             .hero__display-text-2 {
+                padding-left: map-get($spacers, 2);
+                padding-right: map-get($spacers, 2);
                 font-size: $display3-size;
                 line-height: $display3-size;
             }

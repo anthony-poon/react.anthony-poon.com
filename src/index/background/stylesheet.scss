@@ -33,7 +33,6 @@
             animation-duration: 12s;
             transform-origin: center;
             color: $light
-
         }
         .canvas__shape > * {
             position: absolute;
@@ -46,16 +45,19 @@
             align-items: center;
         }
         .canvas__shape-1 {
-            background-color: rgba(227, 178, 60, 0.2);
+            background-color: rgba(227, 178, 60, 0.1);
         }
         .canvas__shape-2 {
-            background-color: rgba(227, 178, 60, 0.4);
+            background-color: rgba(227, 178, 60, 0.2);
         }
         .canvas__shape-3 {
-            background-color: rgba(227, 178, 60, 0.6);
+            background-color: rgba(227, 178, 60, 0.3);
         }
         .canvas__shape-4 {
-            background-color: rgba(227, 178, 60, 0.8);
+            background-color: rgba(227, 178, 60, 0.4);
+        }
+        .canvas__shape-5 {
+            background-color: rgba(227, 178, 60, 0.5);
         }
         .splash__text {
             font-family: "Inter", sans-serif;

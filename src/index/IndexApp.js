@@ -10,10 +10,6 @@ import {ReactComponent as DownArrow} from "./images/down-arrow.svg";
 import {ReactComponent as Mouse} from "./images/mouse.svg";
 
 class IndexApp extends React.Component {
-    componentDidMount() {
-
-    }
-
     render() {
         return (
             <div

@@ -4,9 +4,8 @@ import {
     Route
 } from "react-router-dom";
 import IndexApp from "./index/IndexApp";
-import React, {useEffect} from "react";
+import React from "react";
 import "./stylesheet.scss";
-import { AnimatePresence } from "framer-motion";
 import TestApp from "./test/TestApp";
 
 function App() {

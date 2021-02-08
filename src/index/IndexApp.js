@@ -2,7 +2,7 @@ import React from "react"
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import "./stylesheet.scss"
-import {AnimatePresence, motion} from "framer-motion";
+import {motion} from "framer-motion";
 import DynamicBackground from "./background/DynamicBackground";
 import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";

@@ -1,7 +1,5 @@
 import React from "react"
 import "./stylesheet.scss";
-import { Frame, Page } from "framer";
-import {useInView} from "react-intersection-observer";
 import { motion } from "framer-motion";
 
 const square = {

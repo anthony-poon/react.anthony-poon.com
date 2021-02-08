@@ -5,7 +5,7 @@ import {ReactComponent as AboutMeMobile} from "./images/about-me-app.svg";
 import {ReactComponent as AboutMeCV} from "./images/about-me-cv-2.svg";
 import {motion} from "framer-motion";
 import "./stylesheet.scss";
-import {ParallaxContainer, fadeLeft, fadeRight} from "../components/parallax";
+import {ParallaxContainer, fadeLeft} from "../components/parallax";
 
 const slides = [
     `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab consectetur corporis delectus deserunt

@@ -6,11 +6,11 @@ import {ReactComponent as IconLoading} from "./images/icon_loading.svg";
 const AnimatedSquare = ({ offset, animate, children }) => {
     const variants = {
         "initial": i => ({
-            z: (i - 2) * 20,
+            z: (i - 2) * 40,
             backgroundColor: `rgba(227, 178, 60, ${ (i + 1) * 0.1})`
         }),
         "splash": i => ({
-            z: (i - 2) * 20,
+            z: (i - 2) * 40,
             backgroundColor: `rgba(227, 178, 60, ${ (i + 1) * 0.1})`
         }),
         "loop_1": i => ({

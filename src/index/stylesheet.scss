@@ -76,54 +76,5 @@ body::-webkit-scrollbar { /* WebKit */
     .index__content {
         position: relative;
         color: $text-light;
-        .hero__container {
-            position: relative;
-            height: 100vh;
-            font-family: "Avenir", sans-serif;
-            .hero__display-text-1 {
-                padding: 30vh map-get($spacers, 2) map-get($spacers, 5);
-                font-size: $h1-font-size;
-            }
-            .hero__display-text-2 {
-                padding-left: map-get($spacers, 2);
-                padding-right: map-get($spacers, 2);
-                font-size: $display3-size;
-                line-height: $display3-size;
-            }
-            @include media-breakpoint-up(md) {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                .hero__display-text-1 {
-                    font-size: $display4-size;
-                }
-                .hero__display-text-2 {
-                    font-size: $display2-size;
-                }
-            }
-            .hero__display-bottom {
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: map-get($spacers, 5);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                .hero__mouse-icon {
-                    height: 55px;
-                    fill: $light;
-                    padding-bottom: map-get($spacers, 4);
-                }
-                .hero__arrow-icon {
-                    height: 25px;
-                    fill: $light;
-                }
-            }
-        }
-
-
-
     }
 }

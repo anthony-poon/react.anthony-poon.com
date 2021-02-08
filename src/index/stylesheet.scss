@@ -27,9 +27,6 @@ body::-webkit-scrollbar { /* WebKit */
         height: 1px;
         background-color: red;
     }
-    .overlay__container {
-        background-color: rgba(52, 58, 64, 0.6);
-    }
     .overlay__header {
         color: $theme;
         position: absolute;

@@ -5,7 +5,10 @@
     height: 100vh;
     font-family: "Avenir", sans-serif;
     .hero__display-text-1 {
-        padding: 35vh map-get($spacers, 2) map-get($spacers, 5);
+        padding: 20vh map-get($spacers, 2) map-get($spacers, 5);
+        @include media-breakpoint-up(md) {
+            padding-top: 35vh;
+        }
         font-size: $h1-font-size;
     }
     .hero__display-text-2 {

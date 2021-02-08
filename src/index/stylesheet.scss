@@ -11,6 +11,10 @@ body::-webkit-scrollbar { /* WebKit */
 }
 
 .index__container {
+    .observation__padding {
+        height: 150vh;
+        width: 100vw;
+    }
     .red-1 {
         position: fixed;
         top: 25%;

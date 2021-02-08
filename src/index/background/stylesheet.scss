@@ -33,6 +33,7 @@
             animation-duration: 12s;
             transform-origin: center;
             color: $light;
+            transition: 0.3s opacity;
         }
         .canvas__shape > * {
             position: absolute;
@@ -44,9 +45,13 @@
             justify-content: center;
             align-items: center;
         }
+        .canvas__shape--fade {
+            opacity: 0.5;
+        }
         .splash__text {
             font-family: "Inter", sans-serif;
             letter-spacing: 0.2rem;
+            font-size: $h4-font-size;
         }
     }
 }

@@ -6,17 +6,25 @@ import {motion} from "framer-motion";
 import DynamicBackground from "./background/DynamicBackground";
 import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";
-import {ReactComponent as DownArrow} from "./images/down-arrow.svg";
-import {ReactComponent as Mouse} from "./images/mouse.svg";
 import {HeroImage} from "./hero-image/HeroImage";
+import {ParallaxContainer} from "./components/parallax";
 
 class IndexApp extends React.Component {
+    state = {
+        observing: "hero"
+    }
     render() {
+        const {
+            observing
+        } = this.state;
+        console.log(observing);
         return (
             <div
                 className={"index__container"}
             >
-                <DynamicBackground/>
+                <DynamicBackground
+                    observing={observing}
+                />
                 <motion.div
                     initial={{
                         opacity: 0
@@ -41,9 +49,29 @@ class IndexApp extends React.Component {
                         </span>
                     </div>
                     <div className={"index__content"}>
-                        <HeroImage/>
-                        <AboutMe/>
-                        <Proficiency/>
+                        <ParallaxContainer
+                            initialInView={true}
+                            onObserve={() => this.setState({ observing: "hero" })}
+                        >
+                            <HeroImage
+                                inView={ observing === "hero" }
+                            />
+                        </ParallaxContainer>
+                        <ParallaxContainer
+                            onObserve={() => this.setState({ observing: "about-me-padding" })}
+                        >
+                            <div className={"observation__padding"}/>
+                        </ParallaxContainer>
+                        <ParallaxContainer
+                            onObserve={() => this.setState({ observing: "about-me" })}
+                        >
+                            <AboutMe/>
+                        </ParallaxContainer>
+                        <ParallaxContainer
+                            onObserve={() => this.setState({ observing: "proficiency" })}
+                        >
+                            <Proficiency/>
+                        </ParallaxContainer>
                     </div>
                 </motion.div>
 

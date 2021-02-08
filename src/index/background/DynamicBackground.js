@@ -1,9 +1,9 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import {AnimatePresence, motion} from "framer-motion";
 import "./stylesheet.scss"
 import {ReactComponent as IconLoading} from "./images/icon_loading.svg";
 
-const AnimatedSquare = ({ offset, animate, children }) => {
+const AnimatedSquare = ({ offset, animate, children, fade = false }) => {
     const variants = {
         "initial": i => ({
             z: (i - 2) * 40,
@@ -30,7 +30,7 @@ const AnimatedSquare = ({ offset, animate, children }) => {
             custom={offset}
             animate={animate}
             variants={variants}
-            className={`canvas__shape canvas__shape-${offset + 1}`}
+            className={`canvas__shape canvas__shape-${offset + 1} ` + (fade ? "canvas__shape--fade" : "")}
         >
             {children}
         </motion.div>
@@ -68,11 +68,22 @@ const Spinner = ({isVisible}) => {
     )
 }
 
-const Splash = ({isVisible}) => {
+const Splash = ({ text }) => {
+    let timeout;
+    const [splash, setSplash] = useState(text);
+    useEffect(() => {
+        if (text && text !== splash) {
+            setSplash(text)
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                setSplash("")
+            }, 1700)
+        }
+    }, [text])
     return (
         <AnimatePresence>
             {
-                isVisible && (
+                splash && (
                     <motion.div
                         initial={{
                             x: -20,
@@ -88,11 +99,10 @@ const Splash = ({isVisible}) => {
                         }}
                         transition={{
                             duration: 1,
-                            delay: 1,
                             ease: "easeOut"
                         }}
                     >
-                        <span className={"splash__text"}>Hello World</span>
+                        <span className={"splash__text"}>{splash}</span>
                     </motion.div>
                 )
             }
@@ -136,6 +146,14 @@ class DynamicBackground extends React.Component {
         const {
             animate
         } = this.state;
+        const {
+            observing
+        } = this.props;
+        const splashes = {
+            "hero": "Hello World",
+            "about-me-padding": "About Me"
+        }
+        const splash = splashes[observing] ?? null;
         return (
             <Canvas
                 animate={animate}
@@ -143,15 +161,15 @@ class DynamicBackground extends React.Component {
                 <div
                     className={"canvas__3d-plane"}
                 >
-                    <AnimatedSquare animate={animate} offset={0}/>
-                    <AnimatedSquare animate={animate} offset={1}/>
-                    <AnimatedSquare animate={animate} offset={2}/>
-                    <AnimatedSquare animate={animate} offset={3}>
+                    <AnimatedSquare animate={animate} offset={0} fade={!splash}/>
+                    <AnimatedSquare animate={animate} offset={1} fade={!splash}/>
+                    <AnimatedSquare animate={animate} offset={2} fade={!splash}/>
+                    <AnimatedSquare animate={animate} offset={3} fade={!splash}>
                         <Spinner
                             isVisible={animate === "initial"}
                         />
                         <Splash
-                            isVisible={animate === "splash"}
+                            text={animate !== "initial" ? splash : ""}
                         />
                     </AnimatedSquare>
                 </div>

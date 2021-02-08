@@ -1,46 +1,26 @@
-import {useInView} from "react-intersection-observer";
-import {motion} from "framer-motion";
+import {InView} from "react-intersection-observer";
 import React from "react";
 
-export const ParallaxContainer = (props) => {
-    const {
-        children,
-        ...rest
-    } = props;
-    const { ref, inView } = useInView({
+export const ParallaxContainer = ({ children, onObserve, onExit, ...rest }) => {
+    const defaultOptions = {
         rootMargin: "-25% 0% -25% 0%",
-        threshold: 0.25,
-        triggerOnce: false
-    });
+        threshold: 0,
+        triggerOnce: false,
+        initialInView: false
+    }
+    const options = Object.assign({}, defaultOptions , rest)
     return (
-        <motion.div
-            { ...rest }
-            ref={ref}
-            animate={inView ? "in" : "out"}
+        <InView
+            { ...options }
+            onChange={(inView, entry) => {
+                if (inView && onObserve) {
+                    onObserve(entry)
+                } else if (onExit) {
+                    onExit(entry)
+                }
+            }}
         >
             { children }
-        </motion.div>
+        </InView>
     );
-}
-
-export const fadeLeft = {
-    "in": {
-        x: 0,
-        opacity: 1
-    },
-    "out": {
-        x: -40,
-        opacity: 0
-    }
-}
-
-export const fadeRight = {
-    "in": {
-        x: 0,
-        opacity: 1
-    },
-    "out": {
-        x: 40,
-        opacity: 0
-    }
 }

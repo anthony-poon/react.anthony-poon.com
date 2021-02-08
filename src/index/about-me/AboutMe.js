@@ -3,9 +3,7 @@ import {ReactComponent as AboutMeFullStack} from "./images/about-me-full-stack.s
 import {ReactComponent as AboutMeEdu} from "./images/about-me-edu.svg";
 import {ReactComponent as AboutMeMobile} from "./images/about-me-app.svg";
 import {ReactComponent as AboutMeCV} from "./images/about-me-cv-2.svg";
-import {motion} from "framer-motion";
 import "./stylesheet.scss";
-import {ParallaxContainer, fadeLeft} from "../components/parallax";
 
 const slides = [
     `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab consectetur corporis delectus deserunt
@@ -51,14 +49,10 @@ class AboutMe extends React.Component {
                 className={"content__about-me"}
             >
                 <div className={"container"}>
-                    <ParallaxContainer className={"about-me__container row"}>
-                        <motion.div
-                            variants={fadeLeft}
+                    <div className={"about-me__container row"}>
+                        <div
                             className={"col-md col-12 about-me__lhs"}
                         >
-                            <h1 className={"about-me__header"}>
-                                About me
-                            </h1>
                             <div className={"about-me__selection-group row"}>
                                 <span className={"about-me__selection col-12 col-md-3 my-2"}
                                       onMouseEnter={() => this.handleSlideChange(0)}>Option 1</span>
@@ -80,7 +74,7 @@ class AboutMe extends React.Component {
                                     ))
                                 }
                             </div>
-                        </motion.div>
+                        </div>
                         <div className={"col-md-auto col-12 about-me__rhs"}>
                             <div className={"about-me__icon-container"}>
                                 {
@@ -91,9 +85,7 @@ class AboutMe extends React.Component {
                                 }
                             </div>
                         </div>
-                    </ParallaxContainer>
-
-
+                    </div>
                 </div>
             </div>
         )

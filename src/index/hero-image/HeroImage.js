@@ -1,21 +1,10 @@
 import React from "react"
-import {AnimatePresence} from "framer-motion";
-import {useInView} from "react-intersection-observer";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import {ReactComponent as Mouse} from "../images/mouse.svg";
 import {ReactComponent as DownArrow} from "../images/down-arrow.svg";
-import AboutMe from "../about-me/AboutMe";
-import Proficiency from "../proficiency/Proficiency";
 import {motion} from "framer-motion";
 import "./stylesheet.scss";
 
-export const HeroImage = () => {
-    const { ref, inView, entry } = useInView({
-        rootMargin: "20%",
-        threshold: 1,
-        initialInView: true
-    });
+export const HeroImage = ({ inView }) => {
     const fadeLeft = {
         "in": {
             x: 0,
@@ -44,10 +33,9 @@ export const HeroImage = () => {
             opacity: 0
         },
     }
-    console.log(inView);
     const animate = inView ? "in" : "out";
     return (
-        <div ref={ref} className={"hero__container"}>
+        <div className={"hero__container"}>
             <motion.div
                 animate={animate}
                 variants={fadeLeft}

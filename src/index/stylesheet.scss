@@ -11,6 +11,7 @@ body::-webkit-scrollbar { /* WebKit */
 }
 
 .index__container {
+    overflow-x: hidden;
     .observation__padding {
         height: 150vh;
         width: 100vw;

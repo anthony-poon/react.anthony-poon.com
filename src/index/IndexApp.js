@@ -2,17 +2,12 @@ import React, {useEffect, useRef, useState} from "react"
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import "./stylesheet.scss"
-import {AnimatePresence, motion, useAnimation} from "framer-motion";
+import {motion, useAnimation} from "framer-motion";
 import DynamicBackground from "./background/DynamicBackground";
 import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";
 import {HeroImage} from "./hero-image/HeroImage";
-import {Frame, Page} from "framer";
 import {InView} from "react-intersection-observer";
-
-const isTouchDevice = (('ontouchstart' in window) ||
-    (navigator.maxTouchPoints > 0) ||
-    (navigator.msMaxTouchPoints > 0));
 
 export const ParallaxContainer = ({children, onObserve, onExit, ...rest}) => {
     const fade = {
@@ -66,7 +61,7 @@ const Header = ({ text }) => {
             opacity: 0,
         }
     }
-    const ref = useRef(0);
+
     useEffect(( ) => {
         (async () => {
             await controls.start("out");

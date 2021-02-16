@@ -43,20 +43,8 @@ const fade = {
 }
 
 class AboutMe extends React.Component {
-    state = {
-        slideIndex: 0
-    }
-
-    handleSlideChange(index) {
-        this.setState({
-            slideIndex: index
-        })
-    }
 
     render() {
-        const {
-            slideIndex
-        } = this.state;
         return (
             <motion.div
                 variants={fade}
@@ -65,38 +53,12 @@ class AboutMe extends React.Component {
                 <div className={"container"}>
                     <div className={"row"}>
                         <div
-                            className={"col-md col-12 about-me__lhs"}
+                            className={"col about-me__lhs"}
                         >
-                            <div className={"about-me__selection-group row"}>
-                                <span className={"about-me__selection col-12 col-md-3 my-2"}
-                                      onMouseEnter={() => this.handleSlideChange(0)}>Option 1</span>
-                                <span className={"about-me__selection col-12 col-md-3 my-2"}
-                                      onMouseEnter={() => this.handleSlideChange(1)}>Option 2</span>
-                                <span className={"about-me__selection col-12 col-md-3 my-2"}
-                                      onMouseEnter={() => this.handleSlideChange(2)}>Option 3</span>
-                                <span className={"about-me__selection col-12 col-md-3 my-2"}
-                                      onMouseEnter={() => this.handleSlideChange(3)}>Option 4</span>
-                            </div>
-                            <div className={"about-me__slide-container"}>
-                                {
-                                    slides.map((text, index) => (
-                                        <div key={index}
-                                             className={"about-me__slide " + (index === slideIndex ? "about-me__slide--visible" : "about-me__slide--invisible")}
-                                        >
-                                            {text}
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                        <div className={"col-md-auto col-12 about-me__rhs"}>
-                            <div className={"about-me__icon-container"}>
-                                {
-                                    slideIcons.map((Icon, index) => (
-                                        <Icon key={index}
-                                              className={"about-me__icon " + (index === slideIndex ? "about-me__icon--visible" : "about-me__icon--invisible")}/>
-                                    ))
-                                }
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab consectetur corporis delectus deserunt
+                                exercitationem in ipsum iste itaque, iure labore maxime necessitatibus optio quaerat, quasi reiciendis
+                                voluptas. Deserunt, molestiae.
                             </div>
                         </div>
                     </div>

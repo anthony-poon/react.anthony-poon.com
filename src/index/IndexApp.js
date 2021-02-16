@@ -10,6 +10,10 @@ import {HeroImage} from "./hero-image/HeroImage";
 import {Frame, Page} from "framer";
 import {InView} from "react-intersection-observer";
 
+const isTouchDevice = (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0));
+
 export const ParallaxContainer = ({children, onObserve, onExit, ...rest}) => {
     const fade = {
         "in": {
@@ -61,6 +65,7 @@ class IndexApp extends React.Component {
     state = {
         observing: "hero"
     }
+
     render() {
         const {
             observing
@@ -99,7 +104,8 @@ class IndexApp extends React.Component {
                         <Page
                             width={"100vw"}
                             height={"100%"}
-                            wheelEnabled={true}
+                            wheelEnabled={!isTouchDevice}
+                            dragEnabled={isTouchDevice}
                             direction={"vertical"}
                         >
                             <ParallaxContainer

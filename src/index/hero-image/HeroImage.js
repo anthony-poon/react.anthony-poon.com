@@ -4,7 +4,7 @@ import {ReactComponent as DownArrow} from "../images/down-arrow.svg";
 import {motion} from "framer-motion";
 import "./stylesheet.scss";
 
-export const HeroImage = ({ inView }) => {
+export const HeroImage = () => {
     const fadeLeft = {
         "in": {
             x: 0,
@@ -33,21 +33,20 @@ export const HeroImage = ({ inView }) => {
             opacity: 0
         },
     }
-    const animate = inView ? "in" : "out";
     return (
-        <div className={"hero__container"}>
+        <div
+            className={"hero__container"}>
+            <div className={"hero__display-text"}>
+                <motion.div
+                    variants={fadeLeft}
+                    className={"display-text__1"}
+                >I am a </motion.div>
+                <motion.div
+                    variants={fadeRight}
+                    className={"display-text__2"}
+                >Full Stack Developer</motion.div>
+            </div>
             <motion.div
-                animate={animate}
-                variants={fadeLeft}
-                className={"hero__display-text-1"}
-            >I am a </motion.div>
-            <motion.div
-                animate={animate}
-                variants={fadeRight}
-                className={"hero__display-text-2"}
-            >Full Stack Developer</motion.div>
-            <motion.div
-                animate={animate}
                 variants={fadeOut}
                 className={"hero__display-bottom"}
             >

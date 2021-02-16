@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {ReactComponent as AboutMeFullStack} from "./images/about-me-full-stack.svg";
 import {ReactComponent as AboutMeEdu} from "./images/about-me-edu.svg";
 import {ReactComponent as AboutMeMobile} from "./images/about-me-app.svg";
@@ -29,6 +30,18 @@ const slideIcons = [
     AboutMeCV
 ];
 
+const fade = {
+    "in": {
+        opacity: 1,
+        transition: {
+            delay: 1
+        }
+    },
+    "out": {
+        opacity: 0
+    }
+}
+
 class AboutMe extends React.Component {
     state = {
         slideIndex: 0
@@ -45,11 +58,12 @@ class AboutMe extends React.Component {
             slideIndex
         } = this.state;
         return (
-            <div
+            <motion.div
+                variants={fade}
                 className={"content__about-me"}
             >
                 <div className={"container"}>
-                    <div className={"about-me__container row"}>
+                    <div className={"row"}>
                         <div
                             className={"col-md col-12 about-me__lhs"}
                         >
@@ -87,7 +101,7 @@ class AboutMe extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         )
     }
 }

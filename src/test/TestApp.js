@@ -1,40 +1,32 @@
 import React from "react"
 import "./stylesheet.scss";
-import { motion } from "framer-motion";
-
-const square = {
-    first: {
-        backgroundColor: "#fff",
-        y: -50,
-        x: -50
-    },
-    second: {
-        backgroundColor: "#f00",
-        y: 0,
-        x: -50
-    },
-    third: {
-        backgroundColor: "#000",
-        x: 50,
-        transition: {
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "mirror"
-        }
-    }
-}
+import {Frame, Page} from "framer";
 
 class TestApp extends React.Component {
     render() {
         return (
-            <div className={"test__container"}>
-                <motion.div
-                    initial={"first"}
-                    animate={["third"]}
-                    variants={square}
-                    className={"square"}
-                />
-            </div>
+            <Page
+                width={"100vw"}
+                height={"100vh"}
+                direction={"vertical"}
+                wheelEnabled={true}
+                className={"test__container"}>
+                <Frame
+                    background={"rgba(0,0,0,0)"}
+                >
+                    A
+                </Frame>
+                <Frame
+                    background={"rgba(0,0,0,0)"}
+                >
+                    B
+                </Frame>
+                <Frame
+                    background={"rgba(0,0,0,0)"}
+                >
+                    C
+                </Frame>
+            </Page>
         );
     }
 }

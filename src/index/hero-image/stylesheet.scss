@@ -2,32 +2,38 @@
 
 .hero__container {
     position: relative;
-    height: 100vh;
+    height: 100%;
     font-family: "Avenir", sans-serif;
-    .hero__display-text-1 {
-        padding: 20vh map-get($spacers, 2) map-get($spacers, 5);
-        @include media-breakpoint-up(md) {
-            padding-top: 35vh;
-        }
-        font-size: $h1-font-size;
-    }
-    .hero__display-text-2 {
-        padding-left: map-get($spacers, 2);
-        padding-right: map-get($spacers, 2);
-        font-size: $display3-size;
-        line-height: $display3-size;
-    }
-    @include media-breakpoint-up(md) {
+    .hero__display-text{
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+        right: 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        .hero__display-text-1 {
-            font-size: $display4-size;
+        padding-left: map-get($spacers, 3);
+        padding-right: map-get($spacers, 3);
+        @include media-breakpoint-up(md) {
+            align-items: center;
         }
-        .hero__display-text-2 {
-            font-size: $display2-size;
+        .display-text__1 {
+            font-size: $h1-font-size;
+        }
+        .display-text__2 {
+            font-size: $display4-size;
+            line-height: $display3-size;
+        }
+        @include media-breakpoint-up(md) {
+            .display-text__1 {
+                font-size: $display4-size;
+                padding-bottom: map-get($spacers, 3);
+            }
+            .display-text__2 {
+                font-size: $display2-size;
+            }
         }
     }
+
     .hero__display-bottom {
         position: absolute;
         left: 0;
@@ -37,7 +43,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
         .hero__mouse-icon {
             height: 55px;
             fill: $light;

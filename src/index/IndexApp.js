@@ -7,7 +7,55 @@ import DynamicBackground from "./background/DynamicBackground";
 import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";
 import {HeroImage} from "./hero-image/HeroImage";
-import {ParallaxContainer} from "./components/parallax";
+import {Frame, Page} from "framer";
+import {InView} from "react-intersection-observer";
+
+export const ParallaxContainer = ({children, onObserve, onExit, ...rest}) => {
+    const fade = {
+        "in": {
+            opacity: 1,
+        },
+        "out": {
+            opacity: 1,
+        }
+    }
+    const defaultOptions = {
+        rootMargin: "-25% 0% -25% 0%",
+        threshold: 0,
+        triggerOnce: false,
+        initialInView: false
+    }
+    const options = Object.assign({}, defaultOptions, rest)
+    return (
+        <Frame
+            height={"100%"}
+            width={"100%"}
+            background={"rgba(0,0,0,0)"}
+        >
+            <InView
+                {...options}
+                onChange={(inView, entry) => {
+                    if (inView && onObserve) {
+                        onObserve(entry)
+                    } else if (onExit) {
+                        onExit(entry)
+                    }
+                }}
+            >
+                {({ inView, ref, entries}) => (
+                    <motion.div
+                        ref={ref}
+                        animate={inView ? "in" : "out"}
+                        variants={fade}
+                        className={"scroll-panel__page"}
+                    >
+                        {children}
+                    </motion.div>
+                )}
+            </InView>
+        </Frame>
+    );
+}
 
 class IndexApp extends React.Component {
     state = {
@@ -34,9 +82,9 @@ class IndexApp extends React.Component {
                     transition={{
                         delay: 7
                     }}
-                    className={"overlay__container"}
+                    className={"index__content"}
                 >
-                    <div className={"overlay__header pt-3 pt-md-5 px-md-5"}>
+                    <div className={"index__header pt-3 pt-md-5 px-md-5"}>
                         <span className={"overlay-header__name"}>Anthony Poon</span>
                         <span className={"overlay-header__icon-group"}>
                             <div className={"overlay-header__icon"}>
@@ -47,33 +95,32 @@ class IndexApp extends React.Component {
                             </div>
                         </span>
                     </div>
-                    <div className={"index__content"}>
-                        <ParallaxContainer
-                            initialInView={true}
-                            onObserve={() => this.setState({ observing: "hero" })}
+                    <div className={"index__scroll-panel"}>
+                        <Page
+                            width={"100vw"}
+                            height={"100%"}
+                            wheelEnabled={true}
+                            direction={"vertical"}
                         >
-                            <HeroImage
-                                inView={ observing === "hero" }
-                            />
-                        </ParallaxContainer>
-                        <ParallaxContainer
-                            onObserve={() => this.setState({ observing: "about-me-padding" })}
-                        >
-                            <div className={"observation__padding"}/>
-                        </ParallaxContainer>
-                        <ParallaxContainer
-                            onObserve={() => this.setState({ observing: "about-me" })}
-                        >
-                            <AboutMe/>
-                        </ParallaxContainer>
-                        <ParallaxContainer
-                            onObserve={() => this.setState({ observing: "proficiency" })}
-                        >
-                            <Proficiency/>
-                        </ParallaxContainer>
+                            <ParallaxContainer
+                                initialInView={true}
+                                onObserve={() => this.setState({ observing: "hero" })}
+                            >
+                                <HeroImage/>
+                            </ParallaxContainer>
+                            <ParallaxContainer
+                                onObserve={() => this.setState({ observing: "about-me" })}
+                            >
+                                <AboutMe/>
+                            </ParallaxContainer>
+                            <ParallaxContainer
+                                onObserve={() => this.setState({ observing: "proficiency" })}
+                            >
+                                <Proficiency/>
+                            </ParallaxContainer>
+                        </Page>
                     </div>
                 </motion.div>
-
             </div>
         );
     }

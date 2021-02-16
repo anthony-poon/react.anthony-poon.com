@@ -1,8 +1,8 @@
-import React from "react"
+import React, {useEffect, useRef, useState} from "react"
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import "./stylesheet.scss"
-import {motion} from "framer-motion";
+import {AnimatePresence, motion, useAnimation} from "framer-motion";
 import DynamicBackground from "./background/DynamicBackground";
 import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";
@@ -31,34 +31,76 @@ export const ParallaxContainer = ({children, onObserve, onExit, ...rest}) => {
     }
     const options = Object.assign({}, defaultOptions, rest)
     return (
-        <Frame
-            height={"100%"}
-            width={"100%"}
-            background={"rgba(0,0,0,0)"}
+        <InView
+            {...options}
+            onChange={(inView, entry) => {
+                if (inView && onObserve) {
+                    onObserve(entry)
+                } else if (onExit) {
+                    onExit(entry)
+                }
+            }}
         >
-            <InView
-                {...options}
-                onChange={(inView, entry) => {
-                    if (inView && onObserve) {
-                        onObserve(entry)
-                    } else if (onExit) {
-                        onExit(entry)
-                    }
-                }}
-            >
-                {({ inView, ref, entries}) => (
-                    <motion.div
-                        ref={ref}
-                        animate={inView ? "in" : "out"}
-                        variants={fade}
-                        className={"scroll-panel__page"}
-                    >
-                        {children}
-                    </motion.div>
-                )}
-            </InView>
-        </Frame>
+            {({ inView, ref, entries}) => (
+                <motion.div
+                    ref={ref}
+                    animate={inView ? "in" : "out"}
+                    variants={fade}
+                    className={"scroll-panel__page"}
+                >
+                    {children}
+                </motion.div>
+            )}
+        </InView>
     );
+}
+
+const Header = ({ text }) => {
+    const [splash, setSplash] = useState(text)
+    const controls = useAnimation();
+    const fade = {
+        "in": {
+            opacity: 1,
+        },
+        "out": {
+            opacity: 0,
+        }
+    }
+    const ref = useRef(0);
+    useEffect(( ) => {
+        (async () => {
+            await controls.start("out");
+            setSplash(text)
+            await controls.start("in");
+        }) ()
+    }, [text])
+
+    return (
+        <div className={"index__header pt-3 pt-md-5 px-md-5"}>
+            <span className={"overlay-header__name"}>
+                <motion.span
+                    animate={controls}
+                    variants={fade}
+                >
+                    {splash}
+                </motion.span>
+            </span>
+            <span className={"overlay-header__icon-group"}>
+                <div className={"overlay-header__icon"}>
+                    <GitHubIcon/>
+                </div>
+                <div className={"overlay-header__icon"}>
+                    <LinkedInIcon/>
+                </div>
+            </span>
+        </div>
+    )
+}
+
+const headers = {
+    "hero": "Anthony Poon",
+    "about-me": "About Me",
+    "proficiency": "proficiency"
 }
 
 class IndexApp extends React.Component {
@@ -70,6 +112,7 @@ class IndexApp extends React.Component {
         const {
             observing
         } = this.state;
+        const header = headers[observing];
         return (
             <div
                 className={"index__container"}
@@ -89,42 +132,26 @@ class IndexApp extends React.Component {
                     }}
                     className={"index__content"}
                 >
-                    <div className={"index__header pt-3 pt-md-5 px-md-5"}>
-                        <span className={"overlay-header__name"}>Anthony Poon</span>
-                        <span className={"overlay-header__icon-group"}>
-                            <div className={"overlay-header__icon"}>
-                                <GitHubIcon/>
-                            </div>
-                            <div className={"overlay-header__icon"}>
-                                <LinkedInIcon/>
-                            </div>
-                        </span>
-                    </div>
+                    <Header
+                        text={header}
+                    />
                     <div className={"index__scroll-panel"}>
-                        <Page
-                            width={"100vw"}
-                            height={"100%"}
-                            wheelEnabled={!isTouchDevice}
-                            dragEnabled={isTouchDevice}
-                            direction={"vertical"}
+                        <ParallaxContainer
+                            initialInView={true}
+                            onObserve={() => this.setState({ observing: "hero" })}
                         >
-                            <ParallaxContainer
-                                initialInView={true}
-                                onObserve={() => this.setState({ observing: "hero" })}
-                            >
-                                <HeroImage/>
-                            </ParallaxContainer>
-                            <ParallaxContainer
-                                onObserve={() => this.setState({ observing: "about-me" })}
-                            >
-                                <AboutMe/>
-                            </ParallaxContainer>
-                            <ParallaxContainer
-                                onObserve={() => this.setState({ observing: "proficiency" })}
-                            >
-                                <Proficiency/>
-                            </ParallaxContainer>
-                        </Page>
+                            <HeroImage/>
+                        </ParallaxContainer>
+                        <ParallaxContainer
+                            onObserve={() => this.setState({ observing: "about-me" })}
+                        >
+                            <AboutMe/>
+                        </ParallaxContainer>
+                        <ParallaxContainer
+                            onObserve={() => this.setState({ observing: "proficiency" })}
+                        >
+                            <Proficiency/>
+                        </ParallaxContainer>
                     </div>
                 </motion.div>
             </div>

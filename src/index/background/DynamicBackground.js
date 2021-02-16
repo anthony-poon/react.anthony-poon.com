@@ -84,7 +84,9 @@ const Splash = ({ text }) => {
         // eslint-disable-next-line
     }, [text])
     return (
-        <AnimatePresence>
+        <AnimatePresence
+            exitBeforeEnter
+        >
             {
                 splash && (
                     <motion.div

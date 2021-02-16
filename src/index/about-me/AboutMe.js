@@ -32,10 +32,7 @@ const slideIcons = [
 
 const fade = {
     "in": {
-        opacity: 1,
-        transition: {
-            delay: 1
-        }
+        opacity: 1
     },
     "out": {
         opacity: 0

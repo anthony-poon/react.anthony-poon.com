@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react"
+import React, {useEffect, useState} from "react"
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import "./stylesheet.scss"
@@ -68,7 +68,7 @@ const Header = ({ text }) => {
             setSplash(text)
             await controls.start("in");
         }) ()
-    }, [text])
+    }, [text, controls])
 
     return (
         <div className={"index__header pt-3 pt-md-5 px-md-5"}>

@@ -3,21 +3,6 @@
 @import "node_modules/bootstrap/scss/mixins";
 @import "node_modules/bootstrap/scss/utilities";
 
-@font-face {
-    font-family: "BebasNeue";
-    src: url("./fonts/BebasNeue-Regular.ttf");
-}
-
-@font-face {
-    font-family: "Merriweather";
-    src: url("./fonts/Merriweather-Light.otf");
-}
-
-@font-face {
-    font-family: "Avenir";
-    src: url("./fonts/AvenirNextLTPro-Regular.otf");
-}
-
 $theme-colors: (
         "primary": #E3B23C,
 );
@@ -28,7 +13,6 @@ $theme-shade-2: theme-color-level("primary", 6);
 $theme-tint-1: theme-color-level("primary", -3);
 $theme-tint-1: theme-color-level("primary", -6);
 
-$sans-serif: "BebasNeue", sans-serif;
 
 $bg-color-1: #222;
 

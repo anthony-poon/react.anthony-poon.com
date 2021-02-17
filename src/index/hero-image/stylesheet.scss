@@ -1,12 +1,13 @@
 @import "../../share/theme_1";
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap');
 
 .hero__container {
     position: relative;
-    height: 100%;
-    font-family: "Avenir", sans-serif;
+    height: 100vh;
+    font-family: 'Rubik', sans-serif;
     .hero__display-text{
         position: absolute;
-        bottom: 50%;
+        bottom: 40vh;
         left: 0;
         right: 0;
         display: flex;
@@ -26,11 +27,11 @@
         }
         @include media-breakpoint-up(md) {
             .display-text__1 {
-                font-size: $display4-size;
+                font-size: $h1-font-size;
                 padding-bottom: map-get($spacers, 3);
             }
             .display-text__2 {
-                font-size: $display2-size;
+                font-size: $display3-size;
             }
         }
     }

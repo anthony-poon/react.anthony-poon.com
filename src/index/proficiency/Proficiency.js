@@ -44,7 +44,6 @@ class Proficiency extends React.Component{
         return (
             <div className={"content__proficiency"}>
                 <div className={"container"}>
-                    <h1 className={"mb-5"}>Proficiency</h1>
                     <div className={"proficiency__chart-container"}>
                         <div className={"row"}>
                             <div className={"col-md-8 col-12 mb-4"}>

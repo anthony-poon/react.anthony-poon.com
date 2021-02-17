@@ -95,7 +95,7 @@ const Header = ({ text }) => {
 const headers = {
     "hero": "Anthony Poon",
     "about-me": "About Me",
-    "proficiency": "proficiency"
+    "proficiency": "Skill Sets"
 }
 
 class IndexApp extends React.Component {

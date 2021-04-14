@@ -25,13 +25,14 @@ class AboutMe extends React.Component {
                             className={"col about-me__text"}
                         >
                             <p className={"mb-5"}>
-                                Having both frontend and backend expertise, I am passionate in
-                                creating responsive UI, good user experience and scalable service for web technology.
-                                Started as a System Administrator, I studied part time for my Master
-                                degree and programming. I graduated in 2018
+                                Hi, I am Anthony. I develop frontend and backend applications.
+                            </p>
+                            <p className={"mb-5"}>
+                                I started as a self-taught PHP programmer back in around 2015. Since then, I discovered my passion in programming and technology in general.
+                                Now, I have worked on many project involving different languages, and of different scales.
                             </p>
                             <p>
-                                I am currently working as a Web Developer in Hong Kong
+                                I earned my master's degree in Computer Science in 2018, and I am currently working as a Web Developer in Hong Kong
                             </p>
                         </div>
                     </div>

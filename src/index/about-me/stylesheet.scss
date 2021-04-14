@@ -7,7 +7,11 @@
     display: flex;
     align-items: center;
     .about-me__text {
-        font-size: $h4-font-size;
+        text-align: left;
+        font-size: $h5-font-size;
         font-family: 'Newsreader', serif;
+    }
+    @include media-breakpoint-up(md) {
+        text-align: center;
     }
 }

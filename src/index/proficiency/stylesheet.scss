@@ -49,6 +49,9 @@
             right: 0;
             opacity: 0;
             transition: 0.3s;
+            .proficiency__legend-text{
+                font-family: 'Newsreader', serif;
+            }
         }
 
         .proficiency__legend--focused {

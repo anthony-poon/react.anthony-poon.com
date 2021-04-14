@@ -6,29 +6,25 @@ const chart = [
     {
         "name": "PHP",
         "value": "100%",
-        "legend": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus non quam quis aliquam. " +
-            "Aliquam vitae urna sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        "legend": "Mostly using it in work and backend development. Experienced with Symfony framework, Doctrine ORM, PHPUnit."
     },{
-        "name": "JS / React",
-        "value": "100%",
-        "legend": "Fusce sit amet pretium tortor. Aliquam pellentesque sodales diam, eu porta nibh aliquet eget. " +
-            "Fusce volutpat tellus a pretium varius."
+        "name": "JS / React / Node",
+        "value": "80%",
+        "legend": "Mostly using React for frontend development, and sometimes NodeJS + express for backend."
     },{
         "name": "Java",
-        "value": "70%",
-        "legend": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse " +
-            "id efficitur quam, ac accumsan turpis. "
+        "value": "50%",
+        "legend": "Worked on some freelance project with other developers. Used Spring Boot as framework."
     },{
         "name": "React Native",
         "value": "30%",
-        "legend": "Pellentesque blandit odio quis quam dictum rutrum. Suspendisse potenti. Pellentesque auctor massa " +
-            "quis nisl elementum, non mattis lectus bibendum."
+        "legend": "Worked on a mobile app with other developers. Also I have a personal app in Google Play store."
     }
 ];
 
 class Proficiency extends React.Component{
     state = {
-        focus: -1
+        focus: 0
     }
 
     handleFocus (index) {
@@ -46,7 +42,7 @@ class Proficiency extends React.Component{
                 <div className={"container"}>
                     <div className={"proficiency__chart-container"}>
                         <div className={"row"}>
-                            <div className={"col-md-8 col-12 mb-4"}>
+                            <div className={"col-md-8 col-12 mb-5"}>
                                 {
                                     chart.map((row, index) => (
                                         <div className={"proficiency__chart-row row mb-3 mb-md-4 " + (focus === index ? "proficiency__chart-row--focused ml-2 ml-md-0" : "")}
@@ -75,7 +71,7 @@ class Proficiency extends React.Component{
                                     {
                                         chart.map((row, index) => (
                                             <div key={index} className={"proficiency__legend " + (focus === index ? "proficiency__legend--focused" : "")}>
-                                                <h3 className={"mb-3"}> { row["name"] }</h3>
+                                                <h3 className={"mb-4"}> { row["name"] }</h3>
                                                 <div className={"proficiency__legend-text"}>
                                                     { row["legend"] }
                                                 </div>

@@ -8,6 +8,7 @@ import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";
 import {HeroImage} from "./hero-image/HeroImage";
 import {InView} from "react-intersection-observer";
+import ContactMe from "./contact-me/ContactMe";
 
 export const ParallaxContainer = ({children, onObserve, onExit, ...rest}) => {
     const fade = {
@@ -95,7 +96,8 @@ const Header = ({ text }) => {
 const headers = {
     "hero": "Anthony Poon",
     "about-me": "About Me",
-    "proficiency": "Skill Sets"
+    "proficiency": "Skill Sets",
+    "contact-me": "Contact Me"
 }
 
 class IndexApp extends React.Component {
@@ -146,6 +148,11 @@ class IndexApp extends React.Component {
                             onObserve={() => this.setState({ observing: "proficiency" })}
                         >
                             <Proficiency/>
+                        </ParallaxContainer>
+                        <ParallaxContainer
+                            onObserve={() => this.setState({ observing: "contact-me" })}
+                        >
+                            <ContactMe/>
                         </ParallaxContainer>
                     </div>
                 </motion.div>

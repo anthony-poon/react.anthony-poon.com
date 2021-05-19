@@ -3,10 +3,10 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import IndexApp from "./index/IndexApp";
+import IndexApp from "apps/index/IndexApp";
 import React from "react";
 import "./stylesheet.scss";
-import TestApp from "./test/TestApp";
+import TestApp from "apps/test/TestApp";
 
 function App() {
     return (

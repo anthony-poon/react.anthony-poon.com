@@ -8,6 +8,13 @@ const Observer = ({children, onObserve, onExit, ...rest}) => {
     return (
         <InView
             {...rest}
+            onChange={(inView, entry) => {
+                if (inView && onObserve) {
+                    onObserve(entry)
+                } else if (onExit) {
+                    onExit(entry)
+                }
+            }}
         >
             {({ inView, ref, entries}) => (
                 <motion.div
@@ -32,7 +39,10 @@ Observer.propTypes = {
     rootMargin: PropTypes.string,
     threshold: PropTypes.number,
     triggerOnce: PropTypes.bool,
-    initialInView: PropTypes.bool
+    initialInView: PropTypes.bool,
+    onObserve: PropTypes.func,
+    onExit: PropTypes.func,
+    children: PropTypes.node.isRequired
 }
 
 export default Observer;

@@ -138,21 +138,21 @@ export {
 }
 
 FadeOut.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeOut)).isRequired
+    animate: PropTypes.oneOf(Object.keys(fadeOut))
 }
 
 FadeLeft.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeOut)).isRequired
+    animate: PropTypes.oneOf(Object.keys(fadeLeft))
 }
 
 FadeRight.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeOut)).isRequired
+    animate: PropTypes.oneOf(Object.keys(fadeRight))
 }
 
 FadeDown.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeOut)).isRequired
+    animate: PropTypes.oneOf(Object.keys(fadeDown))
 }
 
 FadeUp.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeOut)).isRequired
+    animate: PropTypes.oneOf(Object.keys(fadeUp))
 }

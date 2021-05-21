@@ -19,7 +19,7 @@ const TestRow = ({ children }) => {
 }
 const ObserverTestView = () => {
     const chars = [];
-    for (let i = 65; i < 65 + 27; i ++) {
+    for (let i = 65; i < 65 + 26; i ++) {
         chars.push(String.fromCharCode(i));
     }
     return (

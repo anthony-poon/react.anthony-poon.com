@@ -7,20 +7,23 @@ import IndexApp from "apps/index/IndexApp";
 import React from "react";
 import "./stylesheet.scss";
 import TestApp from "apps/test/TestApp";
+import {FadeOutPage, PageTransition} from "./share/components/animations/page-transition";
 
 function App() {
     return (
         <div className={"app__background"}>
             <Router>
-                <Switch>
-                    <Route exact={true} path="/" component={IndexApp}>
-                    </Route>
-                    <Route exact={true} path="/test" component={TestApp}>
-                    </Route>
-                    <Route>
+                <PageTransition>
+                    <FadeOutPage exact={true} path="/">
+                        <IndexApp/>
+                    </FadeOutPage>
+                    <FadeOutPage path="/test">
+                        <TestApp/>
+                    </FadeOutPage>
+                    <FadeOutPage>
                         <p>404</p>
-                    </Route>
-                </Switch>
+                    </FadeOutPage>
+                </PageTransition>
             </Router>
         </div>
     );

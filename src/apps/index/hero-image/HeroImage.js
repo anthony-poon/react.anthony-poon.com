@@ -3,56 +3,26 @@ import {ReactComponent as Mouse} from "../images/mouse.svg";
 import {ReactComponent as DownArrow} from "../images/down-arrow.svg";
 import {motion} from "framer-motion";
 import "./stylesheet.scss";
+import {FadeLeft, FadeOut, FadeRight} from "../../../share/components/animations/fade";
 
 export const HeroImage = () => {
-    const fadeLeft = {
-        "in": {
-            x: 0,
-            opacity: 1
-        },
-        "out": {
-            x: -40,
-            opacity: 0
-        },
-    }
-    const fadeRight = {
-        "in": {
-            x: 0,
-            opacity: 1
-        },
-        "out": {
-            x: 40,
-            opacity: 0
-        },
-    }
-    const fadeOut = {
-        "in": {
-            opacity: 1
-        },
-        "out": {
-            opacity: 0
-        },
-    }
     return (
         <div
             className={"hero__container"}>
             <div className={"hero__display-text"}>
-                <motion.div
-                    variants={fadeLeft}
+                <FadeLeft
                     className={"display-text__1"}
-                >I am a </motion.div>
-                <motion.div
-                    variants={fadeRight}
+                >I am a </FadeLeft>
+                <FadeRight
                     className={"display-text__2"}
-                >Full Stack Developer</motion.div>
+                >Full Stack Developer</FadeRight>
             </div>
-            <motion.div
-                variants={fadeOut}
+            <FadeOut
                 className={"hero__display-bottom"}
             >
                 <Mouse className={"hero__mouse-icon"}/>
                 <DownArrow className={"hero__arrow-icon"}/>
-            </motion.div>
+            </FadeOut>
         </div>
     )
 }

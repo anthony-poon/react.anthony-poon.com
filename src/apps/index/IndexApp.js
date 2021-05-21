@@ -7,79 +7,30 @@ import DynamicBackground from "./background/DynamicBackground";
 import AboutMe from "./about-me/AboutMe";
 import Proficiency from "./proficiency/Proficiency";
 import {HeroImage} from "./hero-image/HeroImage";
-import {InView} from "react-intersection-observer";
 import ContactMe from "./contact-me/ContactMe";
-
-export const ParallaxContainer = ({children, onObserve, onExit, ...rest}) => {
-    const fade = {
-        "in": {
-            opacity: 1,
-        },
-        "out": {
-            opacity: 1,
-        }
-    }
-    const defaultOptions = {
-        rootMargin: "-25% 0% -25% 0%",
-        threshold: 0,
-        triggerOnce: false,
-        initialInView: false
-    }
-    const options = Object.assign({}, defaultOptions, rest)
-    return (
-        <InView
-            {...options}
-            onChange={(inView, entry) => {
-                if (inView && onObserve) {
-                    onObserve(entry)
-                } else if (onExit) {
-                    onExit(entry)
-                }
-            }}
-        >
-            {({ inView, ref, entries}) => (
-                <motion.div
-                    ref={ref}
-                    animate={inView ? "in" : "out"}
-                    variants={fade}
-                    className={"scroll-panel__page"}
-                >
-                    {children}
-                </motion.div>
-            )}
-        </InView>
-    );
-}
+import Observer from "../../share/components/animations/observer";
+import {FadeOut, VISIBILITY} from "../../share/components/animations/fade";
 
 const Header = ({ text }) => {
     const [splash, setSplash] = useState(text)
     const controls = useAnimation();
-    const fade = {
-        "in": {
-            opacity: 1,
-        },
-        "out": {
-            opacity: 0,
-        }
-    }
 
     useEffect(( ) => {
         (async () => {
-            await controls.start("out");
+            await controls.start(VISIBILITY.invisible);
             setSplash(text)
-            await controls.start("in");
+            await controls.start(VISIBILITY.visible);
         }) ()
     }, [text, controls])
 
     return (
         <div className={"index__header pt-3 pt-md-5 px-md-5"}>
             <span className={"overlay-header__name"}>
-                <motion.span
+                <FadeOut
                     animate={controls}
-                    variants={fade}
                 >
                     {splash}
-                </motion.span>
+                </FadeOut>
             </span>
             <span className={"overlay-header__icon-group"}>
                 <div className={"overlay-header__icon"}>
@@ -133,27 +84,29 @@ class IndexApp extends React.Component {
                         text={header}
                     />
                     <div className={"index__scroll-panel"}>
-                        <ParallaxContainer
+                        <Observer
+                            threshold={0.8}
                             initialInView={true}
                             onObserve={() => this.setState({ observing: "hero" })}
                         >
                             <HeroImage/>
-                        </ParallaxContainer>
-                        <ParallaxContainer
+                        </Observer>
+                        <Observer
+                            threshold={0.7}
                             onObserve={() => this.setState({ observing: "about-me" })}
                         >
                             <AboutMe/>
-                        </ParallaxContainer>
-                        <ParallaxContainer
+                        </Observer>
+                        <Observer
                             onObserve={() => this.setState({ observing: "proficiency" })}
                         >
                             <Proficiency/>
-                        </ParallaxContainer>
-                        <ParallaxContainer
+                        </Observer>
+                        <Observer
                             onObserve={() => this.setState({ observing: "contact-me" })}
                         >
                             <ContactMe/>
-                        </ParallaxContainer>
+                        </Observer>
                     </div>
                 </motion.div>
             </div>

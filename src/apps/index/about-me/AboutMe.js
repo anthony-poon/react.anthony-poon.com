@@ -1,27 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
 import "./stylesheet.scss";
+import {FadeLeft, FadeUp} from "../../../share/components/animations/fade";
 
-const fade = {
-    "in": {
-        opacity: 1
-    },
-    "out": {
-        opacity: 0
-    }
-}
 
 class AboutMe extends React.Component {
 
     render() {
         return (
-            <motion.div
-                variants={fade}
-                className={"content__about-me"}
-            >
+            <div className={"content__about-me"}>
                 <div className={"container"}>
                     <div className={"row"}>
-                        <div
+                        <FadeLeft
                             className={"col about-me__text"}
                         >
                             <p className={"mb-5"}>
@@ -34,10 +23,10 @@ class AboutMe extends React.Component {
                             <p>
                                 I earned my master's degree in Computer Science in 2018, and I am currently working as a Web Developer in Hong Kong
                             </p>
-                        </div>
+                        </FadeLeft>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         )
     }
 }

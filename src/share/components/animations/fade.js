@@ -1,7 +1,7 @@
 import {motion} from "framer-motion";
 import PropTypes from "prop-types";
 import { VISIBILITY } from "./variants";
-
+import _ from "lodash";
 const fadeOut = {
     [VISIBILITY.visible]: {
         opacity: 1,
@@ -13,39 +13,48 @@ const fadeOut = {
 
 const fadeLeft = {
     [VISIBILITY.visible]: {
+        opacity: 1,
         x: 0,
     },
     [VISIBILITY.invisible]: {
+        opacity: 0,
         x: -50,
     }
 };
 
 const fadeRight = {
     [VISIBILITY.visible]: {
+        opacity: 1,
         x: 0,
     },
     [VISIBILITY.invisible]: {
+        opacity: 0,
         x: 50,
     }
 };
 
 const fadeDown = {
     [VISIBILITY.visible]: {
+        opacity: 1,
         y: 0,
     },
     [VISIBILITY.invisible]: {
+        opacity: 0,
         y: 50,
     }
 };
 
 const fadeUp = {
     [VISIBILITY.visible]: {
+        opacity: 1,
         y: 0,
     },
     [VISIBILITY.invisible]: {
+        opacity: 0,
         y: -50,
     }
 };
+
 
 const Fade = ({ animate, children, variants, ...rest }) => {
     return (
@@ -70,61 +79,49 @@ const FadeOut = (props) => {
 
 const FadeLeft = ({ animate, children, ...rest }) => {
     return (
-        <FadeOut
+        <Fade
             {...rest}
             animate={animate}
+            variants={fadeLeft}
         >
-            <Fade
-                variants={fadeLeft}
-            >
-                {children}
-            </Fade>
-        </FadeOut>
+            {children}
+        </Fade>
     )
 }
 
 const FadeRight = ({ animate, children, ...rest }) => {
     return (
-        <FadeOut
+        <Fade
             {...rest}
             animate={animate}
+            variants={fadeRight}
         >
-            <Fade
-                variants={fadeRight}
-            >
-                {children}
-            </Fade>
-        </FadeOut>
+            {children}
+        </Fade>
     )
 }
 
 const FadeUp = ({ animate, children, ...rest }) => {
     return (
-        <FadeOut
+        <Fade
             {...rest}
             animate={animate}
+            variants={fadeUp}
         >
-            <Fade
-                variants={fadeUp}
-            >
-                {children}
-            </Fade>
-        </FadeOut>
+            {children}
+        </Fade>
     )
 }
 
 const FadeDown = ({ animate, children, ...rest }) => {
     return (
-        <FadeOut
+        <Fade
             {...rest}
             animate={animate}
+            variants={fadeDown}
         >
-            <Fade
-                variants={fadeDown}
-            >
-                {children}
-            </Fade>
-        </FadeOut>
+            {children}
+        </Fade>
     )
 }
 

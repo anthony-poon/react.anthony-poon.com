@@ -1,66 +1,15 @@
 import {motion} from "framer-motion";
 import PropTypes from "prop-types";
-import { VISIBILITY } from "./variants";
-import _ from "lodash";
-const fadeOut = {
-    [VISIBILITY.visible]: {
-        opacity: 1,
-    },
-    [VISIBILITY.invisible]: {
-        opacity: 0,
-    }
-};
+import {ANIMATION, VARIANTS} from "./share";
 
-const fadeLeft = {
-    [VISIBILITY.visible]: {
-        opacity: 1,
-        x: 0,
-    },
-    [VISIBILITY.invisible]: {
-        opacity: 0,
-        x: -50,
-    }
-};
-
-const fadeRight = {
-    [VISIBILITY.visible]: {
-        opacity: 1,
-        x: 0,
-    },
-    [VISIBILITY.invisible]: {
-        opacity: 0,
-        x: 50,
-    }
-};
-
-const fadeDown = {
-    [VISIBILITY.visible]: {
-        opacity: 1,
-        y: 0,
-    },
-    [VISIBILITY.invisible]: {
-        opacity: 0,
-        y: 50,
-    }
-};
-
-const fadeUp = {
-    [VISIBILITY.visible]: {
-        opacity: 1,
-        y: 0,
-    },
-    [VISIBILITY.invisible]: {
-        opacity: 0,
-        y: -50,
-    }
-};
-
-
-const Fade = ({ animate, children, variants, ...rest }) => {
+const Fade = ({ visible, initial, transition, children, variants, ...rest }) => {
+    const exit = visible === undefined ? null : VARIANTS.invisible;
     return (
         <motion.div
             {...rest}
-            animate={animate}
+            initial={initial ? VARIANTS.initial : null}
+            animate={visible ? VARIANTS.visible : VARIANTS.invisible}
+            exit={exit}
             variants={variants}
         >
             {children}
@@ -68,88 +17,132 @@ const Fade = ({ animate, children, variants, ...rest }) => {
     )
 }
 
-const FadeOut = (props) => {
+const FadeOut = ({transition, ...rest}) => {
     return (
         <Fade
-            {...props}
-            variants={fadeOut}
+            {...rest}
+            variants={ANIMATION.fade({
+                direction: "out",
+                transition: transition
+            })}
         />
     )
 }
 
-const FadeLeft = ({ animate, children, ...rest }) => {
+const FadeLeft = ({ transition, ...rest }) => {
     return (
         <Fade
             {...rest}
-            animate={animate}
-            variants={fadeLeft}
-        >
-            {children}
-        </Fade>
+            variants={ANIMATION.fade({
+                direction: "left",
+                transition: transition
+            })}
+        />
     )
 }
 
-const FadeRight = ({ animate, children, ...rest }) => {
+const FadeRight = ({transition, ...rest }) => {
+
     return (
         <Fade
             {...rest}
-            animate={animate}
-            variants={fadeRight}
-        >
-            {children}
-        </Fade>
+            variants={ANIMATION.fade({
+                direction: "right",
+                transition: transition
+            })}
+        />
     )
 }
 
-const FadeUp = ({ animate, children, ...rest }) => {
+const FadeUp = ({transition, ...rest }) => {
     return (
         <Fade
             {...rest}
-            animate={animate}
-            variants={fadeUp}
-        >
-            {children}
-        </Fade>
+            variants={ANIMATION.fade({
+                direction: "up",
+                transition: transition
+            })}
+        />
     )
 }
 
-const FadeDown = ({ animate, children, ...rest }) => {
+const FadeDown = ({transition, ...rest }) => {
     return (
         <Fade
             {...rest}
-            animate={animate}
-            variants={fadeDown}
-        >
-            {children}
-        </Fade>
+            variants={ANIMATION.fade({
+                direction: "down",
+                transition: transition
+            })}
+        />
     )
 }
+
+Fade.defaultProps = {
+    visible: true,
+    initial: false,
+}
+
+Fade.propTypes = {
+    visible: PropTypes.bool,
+    initial: PropTypes.bool,
+}
+
+FadeOut.defaultProps = {
+    visible: true,
+    initial: false,
+}
+
+FadeOut.propTypes = {
+    visible: PropTypes.bool,
+    initial: PropTypes.bool,
+}
+
+FadeLeft.defaultProps = {
+    visible: true,
+    initial: false,
+}
+
+FadeLeft.propTypes = {
+    visible: PropTypes.bool,
+    initial: PropTypes.bool,
+}
+
+FadeRight.defaultProps = {
+    visible: true,
+    initial: false,
+}
+
+FadeRight.propTypes = {
+    visible: PropTypes.bool,
+    initial: PropTypes.bool,
+}
+
+FadeDown.defaultProps = {
+    visible: true,
+    initial: false,
+}
+
+FadeDown.propTypes = {
+    visible: PropTypes.bool,
+    initial: PropTypes.bool,
+}
+
+FadeUp.defaultProps = {
+    visible: true,
+    initial: false,
+}
+
+FadeUp.propTypes = {
+    visible: PropTypes.bool,
+    initial: PropTypes.bool,
+}
+
 
 export {
-    VISIBILITY,
     FadeOut,
     FadeLeft,
     FadeRight,
     FadeDown,
     FadeUp
-}
-
-FadeOut.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeOut))
-}
-
-FadeLeft.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeLeft))
-}
-
-FadeRight.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeRight))
-}
-
-FadeDown.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeDown))
-}
-
-FadeUp.propTypes = {
-    animate: PropTypes.oneOf(Object.keys(fadeUp))
 }

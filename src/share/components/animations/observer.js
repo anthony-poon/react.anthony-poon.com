@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import {InView} from "react-intersection-observer";
 import {motion} from "framer-motion";
 import React from "react";
-import {VISIBILITY} from "./variants";
+import {VARIANTS} from "./share";
 
-const Observer = ({children, onObserve, onExit, ...rest}) => {
+const Observer = ({className, children, onObserve, onExit, ...rest}) => {
     return (
         <InView
             {...rest}
@@ -17,12 +17,12 @@ const Observer = ({children, onObserve, onExit, ...rest}) => {
             }}
         >
             {({ inView, ref, entries}) => (
-                <motion.div
+                <div
+                    className={className}
                     ref={ref}
-                    animate={inView ? VISIBILITY.visible : VISIBILITY.invisible}
                 >
                     {children}
-                </motion.div>
+                </div>
             )}
         </InView>
     )

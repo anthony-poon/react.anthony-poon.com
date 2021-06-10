@@ -1,10 +1,13 @@
-import {FadeLeft} from "../../share/components/animations/fade";
+import {FadeLeft, FadeOut} from "../../share/components/animations/fade";
 import Observer from "../../share/components/animations/observer";
+import {useState} from "react";
+import {motion} from "framer-motion";
 
 const TestRow = ({ children }) => {
+    const [observed, setObserved] = useState();
     return (
-        <Observer>
-            <FadeLeft>
+        <Observer onObserve={() => setObserved(true)} onExit={() => setObserved(false)}>
+            <FadeOut visible={observed}>
                 <div className={"row"}>
                     <div className={"col"}>
                         <div className={"py-5 d-flex align-items-center justify-content-center"}>
@@ -12,11 +15,12 @@ const TestRow = ({ children }) => {
                         </div>
                     </div>
                 </div>
-            </FadeLeft>
+            </FadeOut>
         </Observer>
 
     )
 }
+
 const ObserverTestView = () => {
     const chars = [];
     for (let i = 65; i < 65 + 26; i ++) {

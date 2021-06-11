@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import {InView} from "react-intersection-observer";
-import {motion} from "framer-motion";
 import React from "react";
-import {VARIANTS} from "./share";
 
 const Observer = ({className, children, onObserve, onExit, ...rest}) => {
     return (

@@ -1,7 +1,6 @@
-import {FadeLeft, FadeOut} from "../../share/components/animations/fade";
-import Observer from "../../share/components/animations/observer";
+import { FadeOut } from "../../../share/components/animations/fade";
+import Observer from "../../../share/components/animations/observer";
 import {useState} from "react";
-import {motion} from "framer-motion";
 
 const TestRow = ({ children }) => {
     const [observed, setObserved] = useState();

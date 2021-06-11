@@ -97,5 +97,9 @@ const PageTransition = ({page, children, ...rest}) => {
 
 export {
     PageTransition,
-    FadeOutPage
+    FadeOutPage,
+    FadeLeftPage,
+    FadeRightPage,
+    FadeUpPage,
+    FadeDownPage
 }

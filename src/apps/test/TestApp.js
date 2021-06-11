@@ -1,10 +1,10 @@
 import React from "react"
 import {Link} from "react-router-dom";
 import "./stylesheet.scss";
-import FadeTestView from "./FadeTestView";
-import ObserverTestView from "./ObserverTestView";
+import FadeTestView from "./components/FadeTestView";
+import ObserverTestView from "./components/ObserverTestView";
 import {FadeLeftRoute, RouteTransition} from "../../share/components/animations/route-transition";
-import PageTransitionTestView from "./PageTransitionTestView";
+import PageTransitionTestView from "./components/PageTransitionTestView";
 
 const TestApp = () => {
     return (

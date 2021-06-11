@@ -1,8 +1,7 @@
 import {FadeLeft, FadeOut, FadeRight} from "../../../share/components/animations/fade";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import React, {useEffect, useState} from "react";
-import {FadeOutPage, PageTransition} from "../../../share/components/animations/page-transition";
+import React from "react";
 import {Link} from "react-router-dom";
 
 const Header = () => {

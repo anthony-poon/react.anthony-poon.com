@@ -1,7 +1,4 @@
 import {Route, Switch, useLocation} from "react-router-dom";
-import {FadeLeft, VISIBILITY} from "./fade";
-import FadeTestView from "../../../apps/test/FadeTestView";
-import ObserverTestView from "../../../apps/test/ObserverTestView";
 import {AnimatePresence} from "framer-motion";
 import React from "react";
 import {VARIANTS, ANIMATION} from "./share";

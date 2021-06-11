@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {FadeOutPage, PageTransition} from "../../share/components/animations/page-transition";
+import {FadeOutPage, PageTransition} from "../../../share/components/animations/page-transition";
 
 const PageTransitionTestView = () => {
     const [page, setPage] = useState();

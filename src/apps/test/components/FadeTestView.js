@@ -1,4 +1,4 @@
-import {FadeDown, FadeLeft, FadeOut, FadeRight, FadeUp} from "../../share/components/animations/fade";
+import {FadeDown, FadeLeft, FadeOut, FadeRight, FadeUp} from "../../../share/components/animations/fade";
 import React, {useState} from "react";
 
 const FadeTestView = () => {

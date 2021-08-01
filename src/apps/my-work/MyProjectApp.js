@@ -8,7 +8,7 @@ const ProjectView = () => {
                 Lorem Ipsum
             </div>
             <div className={"project-view__image-container mb-4"}>
-                <img className={"img-fluid"} src={"https://picsum.photos/200/300"}/>
+                <img className={"img-fluid"} src={"https://picsum.photos/200/300"} alt={""}/>
             </div>
             <div className={"project-view__text-container"}>
                 <p>

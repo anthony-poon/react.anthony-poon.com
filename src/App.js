@@ -6,6 +6,7 @@ import React from "react";
 import "./stylesheet.scss";
 import TestApp from "apps/test/TestApp";
 import {FadeLeftRoute, RouteTransition} from "./share/components/animations/route-transition";
+import MyProjectApp from "./apps/my-work/MyProjectApp";
 
 function App() {
     return (
@@ -14,6 +15,9 @@ function App() {
                 <RouteTransition>
                     <FadeLeftRoute exact={true} path="/">
                         <IndexApp/>
+                    </FadeLeftRoute>
+                    <FadeLeftRoute exact={true} path="/my-project">
+                        <MyProjectApp/>
                     </FadeLeftRoute>
                     <FadeLeftRoute path="/test">
                         <TestApp/>
